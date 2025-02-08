@@ -1,10 +1,12 @@
 
 # sky-thermostat
 
-![Overview](https://github.com/user-attachments/assets/5c450676-acba-4c8b-a558-dc36ff85c208)
 
-<img src="https://github.com/user-attachments/assets/7148bde1-ef7e-4869-b67a-e442fc76ba14" width="300">
-<img src="https://github.com/user-attachments/assets/16c48420-e28a-472e-b3df-fe50922d1e70" width="300">
+<img src="https://github.com/user-attachments/assets/bd6857cb-731b-40b0-b54e-b0fdb1428f1a" width="30%">
+<img src="https://github.com/user-attachments/assets/e849c2aa-f357-4ef5-8cf1-3f8ba1a5e038" width="30%">
+<img src="https://github.com/user-attachments/assets/3e99c643-daa4-4ffd-b2e0-9c0a9b7cec8a" width="30%">
+
+![Image](https://github.com/user-attachments/assets/f8944a41-6d88-4b83-a82c-8d488abe556c)
 
 ## **sky-thermostat ?**
 
