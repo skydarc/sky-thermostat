@@ -1078,7 +1078,6 @@ export function renderDhwStatus(appendTo) {
     
     if(appendTo.dhw_charge_value == appendTo.config?.dhw_charge?.power_on) {
         addDhwMdiIcon("fire", appendTo);
-        console.log("charge");
     } else {
         addDhwMdiIcon("", appendTo);
     }
