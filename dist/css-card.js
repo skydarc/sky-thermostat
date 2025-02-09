@@ -84,7 +84,7 @@ export function cssData(user) {
         	fill: rgba(0, 255, 0, 0.8);
         }
         
-        .dial__ticks path.minEcs {
+        .dial__ticks path.minDhw {
         	fill: rgba(0, 78, 255, 0.8);
         }
         .dial__ticks path.max {
@@ -109,6 +109,14 @@ export function cssData(user) {
         	font-size: 120px;
         	font-weight: bold;
         }
+        .dial__lbl--current {
+        	font-size: 80px;
+        	font-weight: bold;
+        	opacity: 1;
+        }
+        .dial--edit .dial__lbl--current {
+        	fill: #666;
+        }
         .dial__lbl--confort {
         	font-size: 22px;
         	font-weight: bold;
@@ -120,6 +128,15 @@ export function cssData(user) {
         
         /* AUTO, STATUS ET MODULATION */
         .dial__lbl--auto {
+            fill: #999 !important;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px;
+            padding: 10px;
+            margin: 10px;
+        }
+        
+        .dial__lbl--mode {
             fill: #999 !important;
             font-size: 20px;
             font-weight: bold;
@@ -195,4 +212,3 @@ export function cssData(user) {
     return css;
 
 }
-  
