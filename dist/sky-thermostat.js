@@ -8,7 +8,7 @@ import * as libCard from './lib-card.js';
 
 import * as libEditor from './lib-editor.js';
 
-console.info("%c Sky-Thermostat \n%c Version  0.1.2 ", "color: orange; font-weight: bold; background: black", "color: white; font-weight: bold; background: dimgray");
+console.info("%c Sky-Thermostat \n%c Version  0.1.3 ", "color: orange; font-weight: bold; background: black", "color: white; font-weight: bold; background: dimgray");
 
 
 /****************************************/
