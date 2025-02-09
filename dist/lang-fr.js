@@ -19,5 +19,27 @@ export default {
     header: "États de la chaudière",
     boiler_state: "Status chaudière",
     boiler_modulation: "Modulation chaudière"
+  },
+  renderDhwStatus: {
+    force: "FORCÉE"
+  },
+  dhw_temp: {
+    header: "Températures de consigne ECS",
+    entity_min: "Température minimale",
+    entity_max: "Température maximale",
+    entity_dhw: "Température ECS"
+  },
+  dhw_mode: {
+    header: "Mode ECS",
+    entity: "Entité mode ECS",
+    power: "Éteint",
+    auto: "Automatique",
+    force: "Marche forcée"
+  },
+  dhw_charge: {
+    header: "Charge ECS",
+    entity: "Entité charge ECS",
+    power_on: "Valeur pour on",
+    power_off: "Valeur pour off"
   }
 };
