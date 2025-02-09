@@ -492,13 +492,13 @@ export function dragEnd(appendTo) {
             
     if(appendTo._drag.origine == 1) {
                 
-        entityID = appendTo.config.reduit_temp;
+        entityID = appendTo.config.slow_temp;
         domain = entityID.split('.')[0];
         newTemp = appendTo.valueReduitTemp;
                 
     } else if(appendTo._drag.origine == 2) {
             
-        entityID = appendTo.config.conf_temp;
+        entityID = appendTo.config.comf_temp;
         domain = entityID.split('.')[0];
         newTemp = appendTo.valueConfTemp;
                 
