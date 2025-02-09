@@ -19,6 +19,28 @@ export default {
     header: "Boiler states",
     boiler_state: "Boiler state",
     boiler_modulation: "Boiler modulation"
+  },
+  renderDhwStatus: {
+    force: "OVERRIDE"
+  },
+  dhw_temp: {
+    header: "Set DHW temperatures",
+    entity_min: "Minimum temperature",
+    entity_max: "Maximum temperature",
+    entity_dhw: "DHW temperature"
+  },
+  dhw_mode: {
+    header: "DHW mode",
+    entity: "DHW mode entity",
+    power: "Power off",
+    auto: "Automatic",
+    force: "Override mode"
+  },
+  dhw_charge: {
+    header: "DHW Charge",
+    entity: "DHW charge entity",
+    power_on: "On value",
+    power_off: "Off value"
   }
 };
 
