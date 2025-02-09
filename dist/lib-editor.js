@@ -37,7 +37,6 @@ export function t(func, key) {
 /*********************************/
 export function renderContent(appendTo) {
     
-    
     const content = appendTo.shadowRoot.querySelector('#content');
         
     content.innerHTML = `
@@ -431,4 +430,196 @@ export function notifyConfigChange(appendTo) {
     
     event.detail = { config: appendTo._config };
     appendTo.dispatchEvent(event);
+}
+
+/*********************************/
+/* fonction de rendu pricipale : */
+/*********************************/
+export function renderDhwContent(appendTo) {
+    
+    const content = appendTo.shadowRoot.querySelector('#content');
+        
+    content.innerHTML = `
+        <!-- TEMP MIN, MAX ET ECS -->
+        <ha-expansion-panel outlined id="subPanel_temp" header="${t("dhw_temp", "header")}">
+            <div class="col inner">
+                <div class="cell">
+                    <ha-entity-picker
+                        label="${t("dhw_temp", "entity_min")}"
+                        id="min_temp"
+                        data-path="min_temp"
+                    >
+                    </ha-entity-picker>
+                </div>
+                <div class="cell">
+                    <ha-entity-picker
+                        label="${t("dhw_temp", "entity_max")}"
+                        id="max_temp"
+                        data-path="max_temp"
+                    >
+                    </ha-entity-picker>
+                </div>
+                <div class="cell">
+                    <ha-entity-picker
+                        label="${t("dhw_temp", "entity_dhw")}"
+                        id="dhw_temp"
+                        data-path="dhw_temp"
+                    >
+                    </ha-entity-picker>
+                </div>
+            </div>
+        </ha-expansion-panel>
+        
+        <!-- MODE ECS -->
+        <ha-expansion-panel outlined id="subPanel_header" header="${t("dhw_mode", "header")}">
+            <div class="col inner">
+                <div class="cell">
+                    <ha-entity-picker
+                        label="${t("dhw_mode", "entity")}"
+                        id="entity_dhw_mode"
+                        data-path="dhw_mode.entity"
+                    >
+                    </ha-entity-picker>
+                </div>
+                <div class="row cell">
+                    
+                    <ha-combo-box class="cell" 
+                        label="${t("dhw_mode", "power")}" 
+                        id="power_mode_value"
+                        data-path="dhw_mode.power" 
+                    ></ha-combo-box>
+                    
+                    <ha-combo-box class="cell" 
+                        label="${t("dhw_mode", "auto")}" 
+                        id="auto_mode_value"
+                        data-path="dhw_mode.auto" 
+                    ></ha-combo-box>
+                    
+                    <ha-combo-box class="cell" 
+                        label="${t("dhw_mode", "force")}" 
+                        id="force_mode_value"
+                        data-path="dhw_mode.force" 
+                    ></ha-combo-box>
+                    
+                </div>
+            </div>
+        </ha-expansion-panel>
+        
+        <!-- STATUS CHAUDIERE -->
+        <ha-expansion-panel outlined id="subPanel_boiler" header="${t("dhw_charge", "header")}">
+            <div class="col inner">
+                <div class="cell">
+                    <ha-entity-picker
+                        label="${t("dhw_charge", "entity")}"
+                        id="dhw_charge_entity"
+                        data-path="dhw_charge.entity"
+                    >
+                    </ha-entity-picker>
+                </div>
+                <div class="row cell">
+                    
+                    <ha-combo-box class="cell" 
+                        label="${t("dhw_charge", "power_on")}" 
+                        id="power_on_value"
+                        data-path="dhw_charge.power_on" 
+                    ></ha-combo-box>
+                    
+                    <ha-combo-box class="cell" 
+                        label="${t("dhw_charge", "power_off")}" 
+                        id="power_off_value"
+                        data-path="dhw_charge.power_off" 
+                    ></ha-combo-box>
+                    
+                </div>
+            </div>
+        </ha-expansion-panel>
+    `;
+    
+    // Réappliquer l'attribut "expanded" aux panneaux qui l'avaient avant
+    expandedPanelsState.forEach(id => {
+        const panel = content.querySelector(`ha-expansion-panel#${id}`);
+        if (panel) {
+            panel.setAttribute("expanded", "");
+        } else {
+            panel.removeAttribute("expanded");
+        }
+    });
+    
+    // gestion ha-entity-picker "reduit"
+    const min_temp = content.querySelector('#min_temp');
+    min_temp.value = appendTo._config?.min_temp ?? "";
+    min_temp.hass = appendTo._hass;
+    
+    // gestion ha-entity-picker "confort"
+    const max_temp = content.querySelector('#max_temp');
+    max_temp.value = appendTo._config?.max_temp ?? "";
+    max_temp.hass = appendTo._hass; 
+    
+    // gestion ha-entity-picker "confort"
+    const dhw_temp = content.querySelector('#dhw_temp');
+    dhw_temp.value = appendTo._config?.dhw_temp ?? "";
+    dhw_temp.hass = appendTo._hass; 
+    
+    // gestion ha-entity-picker "mode ECS"
+    const entity_dhw_mode = content.querySelector('#entity_dhw_mode');
+    const entityId = appendTo._config?.dhw_mode?.entity ?? "";
+    entity_dhw_mode.value = entityId;
+    entity_dhw_mode.hass = appendTo._hass;
+    entity_dhw_mode.includeDomains = ["select"];
+    
+    // recuperation des valeurs possibles pour l'entité "mode de chauffage" selectionnée
+    const entity = appendTo._hass?.states?.[entityId]
+    const options = entity?.attributes?.options || [];
+    
+    // mise en correspondance des valeurs avec le mode de chauffage
+    const power_mode_value = content.querySelector(`#power_mode_value`);
+    power_mode_value.items = options.map(val => ({ label: val, value: val }));
+    power_mode_value.value = appendTo._config?.dhw_mode?.power ?? "";
+    
+    const auto_mode_value = content.querySelector(`#auto_mode_value`);
+    auto_mode_value.items = options.map(val => ({ label: val, value: val }));
+    auto_mode_value.value = appendTo._config?.dhw_mode?.auto ?? "";
+    
+    const force_mode_value = content.querySelector(`#force_mode_value`);
+    force_mode_value.items = options.map(val => ({ label: val, value: val }));
+    force_mode_value.value = appendTo._config?.dhw_mode?.force ?? "";
+    
+    
+    // gestion ha-entity-picker "etat du chauffage"
+    const dhw_charge_entity = content.querySelector('#dhw_charge_entity');
+    const entityId2 = appendTo._config?.dhw_charge?.entity ?? "";
+    dhw_charge_entity.value = entityId2;
+    dhw_charge_entity.hass = appendTo._hass;
+    dhw_charge_entity.includeDomains = ["select"];
+    
+    // recuperation des valeurs possibles pour l'entité "mode de chauffage" selectionnée
+    const entity2 = appendTo._hass?.states?.[entityId2]
+    const options2 = entity2?.attributes?.options || [];
+    
+    // mise en correspondance des valeurs avec le mode de chauffage
+    const power_on_value = content.querySelector(`#power_on_value`);
+    power_on_value.items = options2.map(val => ({ label: val, value: val }));
+    power_on_value.value = appendTo._config?.dhw_charge?.power_on ?? "";
+    
+    const power_off_value = content.querySelector(`#power_off_value`);
+    power_off_value.items = options2.map(val => ({ label: val, value: val }));
+    power_off_value.value = appendTo._config?.dhw_charge?.power_off ?? "";
+    
+    
+    
+    function trackExpansionState() {
+        content.querySelectorAll("ha-expansion-panel").forEach(panel => {
+            panel.addEventListener("expanded-changed", (event) => {
+                if (event.detail.expanded) {
+                    expandedPanelsState.add(panel.id); // Ajoute l'ID du panel s'il est expandu
+                } else {
+                    expandedPanelsState.delete(panel.id); // Supprime s'il est refermé
+                }
+            });
+        });
+    }
+    trackExpansionState();
+    
+    
+    attachInputs(appendTo)
 }
