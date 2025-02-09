@@ -64,6 +64,3 @@ export function circleToPath(cx, cy, r) {
 export function donutPath(cx, cy, rOuter, rInner) {
     return circleToPath(cx, cy, rOuter) + " " + circleToPath(cx, cy, rInner);
 }
-    	
-    	
-    
