@@ -380,7 +380,8 @@ export function renderIco(appendTo) {
             const boiler_state_value = boiler_state ? boiler_state.state : '';
             
             const lbl_text_status = appendTo.svgElem.querySelector('#dial__lbl--status');
-            //const statusArray = ['R\u00E9amorcage', 'D\u00E9marrage', 'Allumage', 'Allumage stab', 'Combustion', 'Fin comb.', 'Arr\u00EAt', 'Aspi.', '! Cendre !', '! Pellets !', 'Pell. switch', 'erreur', '\u00C9talonner'];
+            //const statusArray = [t("state", "restart"), t("state", "start"), t("state", "ignition"), t("state", "stab_ignition"), t("state", "combution"), t("state", "end_of_comb"), t("state", "stop"), t("state", "suction"), t("state", "ashes"), t("state", "pellets"), t("state", "pell_switch"), t("state", "error"), t("state", "calibrate")];
+
             
             lbl_text_status.textContent = boiler_state_value;
             //lbl_text_status.textContent = statusArray[boiler_state_value];
