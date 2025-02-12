@@ -94,8 +94,9 @@ class skyThermostat extends HTMLElement {
 			origine: null
 		};
 		this._isMenuOpen = false;
-
+		this._isTrad = false;
     }
+	
     
 	set hass(hass) {
 	    
