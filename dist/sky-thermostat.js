@@ -101,6 +101,8 @@ class skyThermostat extends HTMLElement {
 	set hass(hass) {
 	    
 	    this._hass = hass;
+
+	if(!this._isTrad) this._isTrad = libCard.loadTranslations(this);
 	    
 	    if (this._drag.inProgress || this._isMenuOpen) return;
 	    
