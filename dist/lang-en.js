@@ -20,6 +20,21 @@ export default {
     boiler_state: "Boiler state",
     boiler_modulation: "Boiler modulation"
   },
+  state: {
+    restart: "Re-priming",
+    start: "Start",
+    ignition: "Ignition",
+    stab_ignition: "Stab. ignition",
+    combution: "Combution",
+    end_of_comb: "End of comb.",
+    stop: "Stop",
+    suction: "Suction",
+    ashes: "! Ashes !",
+    pellets: "! Pellets !",
+    pell_switch: "Pell. switch",
+    error: "error",
+    calibrate: "calibrate"
+  },
   renderDhwStatus: {
     force: "OVERRIDE"
   },
