@@ -20,6 +20,21 @@ export default {
     boiler_state: "Status chaudière",
     boiler_modulation: "Modulation chaudière"
   },
+  state: {
+    restart: "Réamorcage",
+    start: "Démarrage",
+    ignition: "Allumage",
+    stab_ignition: "Allumage stab",
+    combution: "Combustion",
+    end_of_comb: "Fin comb.",
+    stop: "Arrêt",
+    suction: "Aspi.",
+    ashes: "! Cendres !",
+    pellets: "! Pellets !",
+    pell_switch: "Pell. switch",
+    error: "Erreur",
+    calibrate: "Étalonner"
+  },
   renderDhwStatus: {
     force: "FORCÉE"
   },
